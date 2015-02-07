@@ -20,7 +20,6 @@ public class StatementPrinterFeature {
 	@Mock Console console;
 	@Mock Clock clock;
 
-
 	private Account account;
 
 	@Before

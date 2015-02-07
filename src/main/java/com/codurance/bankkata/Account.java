@@ -11,15 +11,16 @@ public class Account {
 	}
 
 	public void deposit(int amount) {
-		Transaction transaction = new Transaction(amount, clock.timeAsString());
-		transactions.add(transaction);
-	}
-
-	public void printStatement() {
-
+		Transaction deposit = new Transaction(amount, clock.timeAsString());
+		transactions.add(deposit);
 	}
 
 	public void withdraw(int amount) {
+		Transaction withdrawal = new Transaction(-amount, clock.timeAsString());
+		transactions.add(withdrawal);
+	}
+
+	public void printStatement() {
 
 	}
 }
