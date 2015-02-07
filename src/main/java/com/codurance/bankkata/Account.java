@@ -10,18 +10,16 @@ public class Account {
 		this.transactions = transactions;
 	}
 
-	public void printStatement() {
-
-
-	}
-
 	public void deposit(int amount) {
 		Transaction transaction = new Transaction(amount, clock.timeAsString());
 		transactions.add(transaction);
 	}
 
-	public void withdraw(int amount) {
+	public void printStatement() {
 
+	}
+
+	public void withdraw(int amount) {
 
 	}
 }
