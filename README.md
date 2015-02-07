@@ -17,6 +17,7 @@ Create a simple bank application with the following features:
 Acceptance criteria
 
 Statement should have the following the format:
+
 >	DATE       | AMOUNT  | BALANCE
 >	10/04/2014 | 500.00  | 1400.00
 >	02/04/2014 | -100.00 | 900.00
