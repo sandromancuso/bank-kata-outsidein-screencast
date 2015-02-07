@@ -2,6 +2,8 @@ package acceptance;
 
 import com.codurance.bankkata.Account;
 import com.codurance.bankkata.Console;
+import com.codurance.bankkata.Transactions;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
@@ -12,15 +14,19 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class StatementPrinterFeature {
 
-	@Mock
-	Console console;
+	@Mock Console console;
+
 
 	private Account account;
 
+	@Before
+	public void initialise() {
+		Transactions transactions = new Transactions();
+		account = new Account(transactions);
+	}
+
 	@Test public void
 	print_transactions_in_reverse_chronological_order() {
-		account = new Account();
-
 		account.deposit(1000);
 		account.withdraw(-100);
 		account.deposit(500);
