@@ -1,5 +1,7 @@
-package com.codurance.bankkata;
+package acceptance;
 
+import com.codurance.bankkata.Account;
+import com.codurance.bankkata.Console;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
@@ -10,7 +12,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class StatementPrinterFeature {
 
-	@Mock Console console;
+	@Mock
+	Console console;
 
 	private Account account;
 
