@@ -1,6 +1,7 @@
 package acceptance;
 
 import com.codurance.bankkata.Account;
+import com.codurance.bankkata.Clock;
 import com.codurance.bankkata.Console;
 import com.codurance.bankkata.Transactions;
 import org.junit.Before;
@@ -11,10 +12,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.BDDMockito.given;
+
 @RunWith(MockitoJUnitRunner.class)
 public class StatementPrinterFeature {
 
 	@Mock Console console;
+	@Mock Clock clock;
 
 
 	private Account account;
@@ -22,11 +26,13 @@ public class StatementPrinterFeature {
 	@Before
 	public void initialise() {
 		Transactions transactions = new Transactions();
-		account = new Account(transactions);
+		account = new Account(clock, transactions);
 	}
 
 	@Test public void
 	print_transactions_in_reverse_chronological_order() {
+		given(clock.timeAsString()).willReturn("01/04/2014", "02/04/2014", "10/04/2014");
+
 		account.deposit(1000);
 		account.withdraw(-100);
 		account.deposit(500);
