@@ -18,15 +18,24 @@ public class StatementPrinter {
 	}
 
 	public void print(List<Transaction> transactions) {
+		printStatementHeader();
+		printStatementLines(transactions);
+	}
+
+	private void printStatementHeader() {
 		console.printLine(STATEMENT_HEADER);
+	}
 
-		final AtomicInteger runningBalance = new AtomicInteger(0);
-		List<String> statementLines = transactions
-											.stream()
-											.map(t -> statementLine(runningBalance, t))
-											.collect(toList());
+	private void printStatementLines(List<Transaction> transactions) {
+		List<String> statementLines = statementLinesFor(transactions);
 		reverse(statementLines).forEach(console::printLine);
+	}
 
+	private List<String> statementLinesFor(List<Transaction> transactions) {
+		final AtomicInteger runningBalance = new AtomicInteger(0);
+		return transactions.stream()
+							.map(t -> statementLine(runningBalance, t))
+							.collect(toList());
 	}
 
 	private String statementLine(AtomicInteger runningBalance, Transaction t) {
