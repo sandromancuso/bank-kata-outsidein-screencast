@@ -1,9 +1,11 @@
 package com.codurance.bankkata;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.google.common.collect.Lists.reverse;
+import static java.util.stream.Collectors.toList;
 
 public class StatementPrinter {
 
@@ -18,25 +20,22 @@ public class StatementPrinter {
 	public void print(List<Transaction> transactions) {
 		console.printLine(STATEMENT_HEADER);
 
-		List<Transaction> transactionsToBePrinted = new ArrayList<>(transactions);
+		final AtomicInteger runningBalance = new AtomicInteger(0);
+		List<String> statementLines = transactions
+											.stream()
+											.map(t -> statementLine(runningBalance, t))
+											.collect(toList());
+		reverse(statementLines).forEach(console::printLine);
 
-		List<String> statementLines = new ArrayList<>();
-		int runningBalance = 0;
-		for (Transaction transaction : transactionsToBePrinted) {
-			runningBalance += transaction.amount();
-			statementLines.add(transaction.date() +
-								" | " +
-								formatWithTwoDecimalDigits(transaction.amount()) +
-								" | " +
-								formatWithTwoDecimalDigits(runningBalance));
-		}
-		Collections.reverse(statementLines);
+	}
 
-		statementLines.forEach(l -> {
-			System.out.println(l);
-			console.printLine(l);
-		});
-
+	private String statementLine(AtomicInteger runningBalance, Transaction t) {
+		return
+			t.date() +
+			" | " +
+			formatWithTwoDecimalDigits(t.amount()) +
+			" | " +
+			formatWithTwoDecimalDigits(runningBalance.addAndGet(t.amount()));
 	}
 
 	private String formatWithTwoDecimalDigits(int amount) {
