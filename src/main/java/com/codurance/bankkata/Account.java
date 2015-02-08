@@ -4,10 +4,12 @@ public class Account {
 
 	private Clock clock;
 	private Transactions transactions;
+	private StatementPrinter statementPrinter;
 
-	public Account(Clock clock, Transactions transactions) {
+	public Account(Clock clock, Transactions transactions, StatementPrinter statementPrinter) {
 		this.clock = clock;
 		this.transactions = transactions;
+		this.statementPrinter = statementPrinter;
 	}
 
 	public void deposit(int amount) {
@@ -21,6 +23,6 @@ public class Account {
 	}
 
 	public void printStatement() {
-
+		statementPrinter.print(transactions.all());
 	}
 }
