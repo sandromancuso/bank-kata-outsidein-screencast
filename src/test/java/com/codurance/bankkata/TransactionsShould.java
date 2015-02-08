@@ -25,18 +25,7 @@ public class TransactionsShould {
 	}
 
 	@Test public void
-	return_a_transaction_added() {
-		Transaction transaction = new Transaction(100, "12/12/2013");
-		transactions.add(transaction);
-
-		List<Transaction> transactionList = transactions.all();
-
-		assertThat(transactionList.size(), is(1));
-		assertThat(transactionList.get(0), is(transaction));
-	}
-
-	@Test public void
-	return_transaction_in_reverse_chronological_order() {
+	return_a_transactions_added() {
 		Transaction transaction1 = new Transaction(100, "01/01/2001");
 		Transaction transaction2 = new Transaction(200, "02/02/2002");
 		transactions.add(transaction1);
@@ -45,8 +34,8 @@ public class TransactionsShould {
 		List<Transaction> transactionList = transactions.all();
 
 		assertThat(transactionList.size(), is(2));
-		assertThat(transactionList.get(0), is(transaction2));
-		assertThat(transactionList.get(1), is(transaction1));
+		assertThat(transactionList.get(0), is(transaction1));
+		assertThat(transactionList.get(1), is(transaction2));
 	}
 
 }

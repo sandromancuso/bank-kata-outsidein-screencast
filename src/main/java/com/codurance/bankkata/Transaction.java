@@ -13,6 +13,14 @@ public class Transaction {
 		this.date = date;
 	}
 
+	public String date() {
+		return this.date;
+	}
+
+	public int amount() {
+		return amount;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		return reflectionEquals(this, o);

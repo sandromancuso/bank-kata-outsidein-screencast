@@ -12,7 +12,7 @@ public class Transactions {
 	}
 
 	public void add(Transaction transaction) {
-		transactionList.add(0, transaction);
+		transactionList.add(transaction);
 	}
 
 	public List<Transaction> all() {

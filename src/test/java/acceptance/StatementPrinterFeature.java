@@ -22,7 +22,7 @@ public class StatementPrinterFeature {
 	@Before
 	public void initialise() {
 		Transactions transactions = new Transactions();
-		StatementPrinter statementPrinter = new StatementPrinter();
+		StatementPrinter statementPrinter = new StatementPrinter(console);
 		account = new Account(clock, transactions, statementPrinter);
 	}
 
@@ -31,7 +31,7 @@ public class StatementPrinterFeature {
 		given(clock.timeAsString()).willReturn("01/04/2014", "02/04/2014", "10/04/2014");
 
 		account.deposit(1000);
-		account.withdraw(-100);
+		account.withdraw(100);
 		account.deposit(500);
 
 		account.printStatement();
