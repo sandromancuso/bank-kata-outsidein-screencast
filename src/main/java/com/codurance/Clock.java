@@ -1,9 +1,11 @@
 package com.codurance;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Clock {
 	public String dateAsString() {
-		throw new NotImplementedException();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return simpleDateFormat.format(new Date());
 	}
 }
