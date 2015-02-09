@@ -11,6 +11,7 @@
 	<properties>
 		<commons-lang.version>2.6</commons-lang.version>
 		<guava.version>18.0</guava.version>
+		<lazyseq.version>0.0.1</lazyseq.version>
 		<hamcrest.version>1.3</hamcrest.version>
 		<junit.version>4.12</junit.version>
 		<mockito.version>1.10.19</mockito.version>
@@ -29,6 +30,11 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.nurkiewicz.lazyseq</groupId>
+			<artifactId>lazyseq</artifactId>
+			<version>${lazyseq.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
