@@ -24,7 +24,7 @@ public class PrintStatementFeature {
 	@Before
 	public void initialise() {
 		Transactions transactions = new Transactions();
-		StatementPrinter statementPrinter = new StatementPrinter();
+		StatementPrinter statementPrinter = new StatementPrinter(console);
 		account = new Account(clock, transactions, statementPrinter);
 	}
 

@@ -1,12 +1,20 @@
 package com.codurance;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import com.codurance.bankkata.Console;
 
 import java.util.List;
 
 public class StatementPrinter {
 
+	public static final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
+
+	private Console console;
+
+	public StatementPrinter(Console console) {
+		this.console = console;
+	}
+
 	public void print(List<Transaction> transactionList) {
-		throw new NotImplementedException();
+		console.printLine(STATEMENT_HEADER);
 	}
 }
