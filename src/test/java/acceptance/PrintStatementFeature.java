@@ -1,6 +1,8 @@
 package acceptance;
 
 import com.codurance.Account;
+import com.codurance.Clock;
+import com.codurance.Transactions;
 import com.codurance.bankkata.Console;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +16,14 @@ import static org.mockito.Mockito.verify;
 public class PrintStatementFeature {
 
 	@Mock Console console;
+	@Mock Clock clock;
+
 	private Account account;
 
 	@Before
 	public void initialise() {
-	    account = new Account();
+		Transactions transactions = new Transactions();
+		account = new Account(clock, transactions);
 	}
 
 	@Test public void
