@@ -4,12 +4,9 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
-public class Transactions {
-	public void add(Transaction transaction) {
-		throw new NotImplementedException();
-	}
+public class StatementPrinter {
 
-	public List<Transaction> all() {
+	public void print(List<Transaction> transactionList) {
 		throw new NotImplementedException();
 	}
 }

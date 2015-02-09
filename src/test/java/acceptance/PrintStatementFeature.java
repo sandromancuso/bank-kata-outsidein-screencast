@@ -2,6 +2,7 @@ package acceptance;
 
 import com.codurance.Account;
 import com.codurance.Clock;
+import com.codurance.StatementPrinter;
 import com.codurance.Transactions;
 import com.codurance.bankkata.Console;
 import org.junit.Before;
@@ -23,7 +24,8 @@ public class PrintStatementFeature {
 	@Before
 	public void initialise() {
 		Transactions transactions = new Transactions();
-		account = new Account(clock, transactions);
+		StatementPrinter statementPrinter = new StatementPrinter();
+		account = new Account(clock, transactions, statementPrinter);
 	}
 
 	@Test public void
