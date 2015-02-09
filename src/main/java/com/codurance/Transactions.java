@@ -1,15 +1,18 @@
 package com.codurance;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
+import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Collections.unmodifiableList;
+
 public class Transactions {
+	private List<Transaction> transactionList = new ArrayList<>();
+
 	public void add(Transaction transaction) {
-		throw new NotImplementedException();
+		transactionList.add(transaction);
 	}
 
 	public List<Transaction> all() {
-		throw new NotImplementedException();
+		return unmodifiableList(transactionList);
 	}
 }
