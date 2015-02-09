@@ -5,12 +5,20 @@ import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode
 
 public class Transaction {
 
-	private final String systemTime;
+	private final String date;
 	private final int amount;
 
 	public Transaction(String date, int amount) {
-		this.systemTime = date;
+		this.date = date;
 		this.amount = amount;
+	}
+
+	public int amount() {
+		return amount;
+	}
+
+	public String date() {
+		return date;
 	}
 
 	@Override
@@ -26,7 +34,7 @@ public class Transaction {
 	@Override
 	public String toString() {
 		return "Transaction{" +
-				"date='" + systemTime +
+				"date='" + date +
 				", amount=" + amount + '\'' +
 				'}';
 	}
