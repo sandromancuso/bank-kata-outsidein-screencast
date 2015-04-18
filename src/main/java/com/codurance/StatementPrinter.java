@@ -24,6 +24,10 @@ public class StatementPrinter {
 		printStatementLinesFor(transactionList);
 	}
 
+	private void printHeader() {
+		console.printLine(STATEMENT_HEADER);
+	}
+
 	private void printStatementLinesFor(List<Transaction> transactionList) {
 		List<String> statementLines = statementLines(transactionList);
 		reverse(statementLines).forEach(console::printLine);
@@ -43,10 +47,6 @@ public class StatementPrinter {
 				formatDecimal(t.amount()) +
 				" | " +
 				formatDecimal(runningBalance.addAndGet(t.amount()));
-	}
-
-	private void printHeader() {
-		console.printLine(STATEMENT_HEADER);
 	}
 
 	private String formatDecimal(int amount) {
